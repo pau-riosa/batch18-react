@@ -8,7 +8,6 @@ const List = (props) => {
         display: "flex",
         justifyContent: "center",
         alignContent: "center",
-        backgroundColor: "red",
       }}
     >
       <h1>{item}</h1>
