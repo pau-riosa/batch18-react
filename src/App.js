@@ -18,10 +18,22 @@ function App() {
     setItems((prevData) => prevData.filter((i, index) => index !== item));
   };
 
+  const updateItem = (updateItem, position) => {
+    setItems((prevData) => {
+      return prevData.map((item, index) => {
+        if (index === position) {
+          item = updateItem;
+        }
+
+        return item;
+      });
+    });
+  };
+
   return (
     <div className="App">
       <Form add={addItem} />
-      <List items={items} delete={deleteItem} />
+      <List items={items} delete={deleteItem} update={updateItem} />
     </div>
   );
 }
