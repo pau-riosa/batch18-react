@@ -1,46 +1,27 @@
-import { useState } from "react";
-import Welcome from "./components/Welcome.js";
-import Form from "./components/Form.js";
-import logo from "./logo.svg";
 import "./App.css";
-
-const USER_DATA = [
-  {
-    name: "Maria",
-    mobile: "1234",
-  },
-];
-
-// display list of users
-function DisplayUsers(props) {
-  return props.users.map((item, index) => <Welcome data={item} key={index} />);
-}
+import { useState } from "react";
+import Form from "./components/Form.js";
+import List from "./components/List.js";
 
 function App() {
-  const [data, setData] = useState(USER_DATA);
+  const [items, setItems] = useState([]);
 
-  // update data
-  const addData = (props) => {
-    setData((prevData) => {
-      return [props, ...prevData];
+  // add item
+  const addItem = (item) => {
+    setItems((prevData) => {
+      return [item, ...prevData];
     });
+  };
+
+  // delete item
+  const deleteItem = (item) => {
+    setItems((prevData) => prevData.filter((i, index) => index !== item));
   };
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Form addData={addData} />
-        <DisplayUsers users={data} />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Form add={addItem} />
+      <List items={items} delete={deleteItem} />
     </div>
   );
 }
