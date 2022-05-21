@@ -14,9 +14,16 @@ const Form = (props) => {
 
   return (
     <div>
-      <form onSubmit={submitHandler}>
-        <input type="text" value={item} onChange={itemChangedHandler} />
-        <button type="submit">Add</button>
+      <form className="Form" onSubmit={submitHandler}>
+        <input
+          className="Input"
+          type="text"
+          value={item}
+          onChange={itemChangedHandler}
+        />
+        <button className="Button" type="submit">
+          Add
+        </button>
       </form>
     </div>
   );

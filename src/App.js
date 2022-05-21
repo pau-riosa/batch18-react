@@ -32,8 +32,13 @@ function App() {
 
   return (
     <div className="App">
-      <Form add={addItem} />
-      <List items={items} delete={deleteItem} update={updateItem} />
+      <h1>Add a Todo</h1>
+      <div>
+        <Form add={addItem} />
+      </div>
+      <div>
+        <List items={items} delete={deleteItem} update={updateItem} />
+      </div>
     </div>
   );
 }

@@ -14,6 +14,7 @@ const Item = (props) => {
   const submitUpdate = (event, item, index) => {
     event.preventDefault();
     props.update(item, index);
+    setUpdateItem("");
     setIsUpdating(false);
   };
   return (
@@ -26,21 +27,35 @@ const Item = (props) => {
       }}
     >
       {isUpdating ? (
-        <form onSubmit={(event) => submitUpdate(event, updateItem, index)}>
+        <form
+          className="Form"
+          onSubmit={(event) => submitUpdate(event, updateItem, index)}
+        >
           <input
             type="text"
             value={updateItem}
             onChange={updateChangeHandler}
           />
-          <button type="submit">Update</button>
-          <button onClick={() => setIsUpdating(false)}>Cancel</button>
+          <button className="Button Red" type="submit">
+            Update
+          </button>
+          <button
+            className="Button Purple"
+            onClick={() => setIsUpdating(false)}
+          >
+            Cancel
+          </button>
         </form>
       ) : (
-        <>
+        <div className="Item">
           <p>{item}</p>
-          <button onClick={() => remove(index)}>Delete</button>
-          <button onClick={() => update(index)}>Update</button>
-        </>
+          <button className="Button Red" onClick={() => remove(index)}>
+            Delete
+          </button>
+          <button className="Button Purple" onClick={() => update(index)}>
+            Update
+          </button>
+        </div>
       )}
     </div>
   );
